@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import QuestionCard from "@/components/cards/QuestionCard";
 import HomeFilter from "@/components/filters/HomeFilter";
 import LocalSearch from "@/components/search/LocalSearch";
 import { Button } from "@/components/ui/button";
@@ -12,11 +13,15 @@ const questions = [
     title: "How to learn React?",
     description: "I want to learn React, can anyone help me?",
     tags: [
-      { id: "1", name: "React" },
-      { id: "2", name: "JavaScript" },
-      { id: "3", name: "Frontend" },
+      { _id: "1", name: "React" },
+      { _id: "2", name: "JavaScript" },
     ],
-    author: { id: "1", name: "John Doe" },
+    author: {
+      _id: "1",
+      name: "John Doe",
+      image:
+        "https://admuzzum.xdevel.com/cloud/x/cid/5202/im/jpeg/XZXU/X/W/180a94571a68559c76a887e043e1f5a6.jpg",
+    },
     upvotes: 10,
     answers: 5,
     views: 100,
@@ -27,10 +32,15 @@ const questions = [
     title: "How to learn javascript?",
     description: "I want to learn React, can anyone help me?",
     tags: [
-      { id: "1", name: "JavaScript" },
-      { id: "2", name: "Frontend" },
+      { _id: "1", name: "JavaScript" },
+      { _id: "2", name: "JavaScript" },
     ],
-    author: { id: "1", name: "John Doe" },
+    author: {
+      _id: "1",
+      name: "John Doe",
+      image:
+        "https://admuzzum.xdevel.com/cloud/x/cid/5202/im/jpeg/XZXU/X/W/180a94571a68559c76a887e043e1f5a6.jpg",
+    },
     upvotes: 10,
     answers: 5,
     views: 100,
@@ -78,7 +88,7 @@ const Home = async ({ searchParams }: SearchParams) => {
       <HomeFilter />
       <div className="mt-10 flex w-full flex-col">
         {filteredQuestions.map((question) => (
-          <h1 key={question._id}>{question.title}</h1>
+          <QuestionCard key={question._id} question={question} />
         ))}
       </div>
     </>
